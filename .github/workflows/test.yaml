@@ -1,0 +1,17 @@
+name: Verifier Code
+
+on: [push, pull_request]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: pwd
+    - run: ls
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - run: ls ${{github.workspace}}
+
+    - name: Check PHP syntax
+      run: phpcs public/index.php
