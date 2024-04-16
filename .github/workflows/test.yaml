@@ -11,8 +11,5 @@ phpunit:
       with:
         php-version: "8.2"
 
-    - name: Installer PHPUnit
-      run: composer install
-
     - name: Exécuter les tests PHPUnit
-      run: vendor/bin/phpunit tests
+      run: php vendor/bin/phpunit --testsuite=tests
