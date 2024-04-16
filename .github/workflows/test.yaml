@@ -32,8 +32,5 @@ jobs:
         with:
           php-version: "8.2"
 
-      - name: Check PHPUnit Installation
-        run: ls -l vendor/bin
-
       - name: Run PHPUnit Tests
         run: php vendor/bin/phpunit tests
