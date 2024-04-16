@@ -1,15 +1,36 @@
-phpunit:
-  name: Tests PHPUnit
-  runs-on: ubuntu-latest
+name: PHPCS td6
+on: [push]
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Récupérer le code
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v2
 
-    - name: Configuration de PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: "8.2"
+      - name: PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
 
-    - name: Exécuter les tests PHPUnit
-      run: php vendor/bin/phpunit --testsuite=tests
+      - name: Installer PHPCS
+        run: composer global require "squizlabs/php_codesniffer=*"
+
+      - name: Exécuter PHPCS
+        run: ~/.composer/vendor/bin/phpcs ./src
+  phpunit:
+    name: PHPUnit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Run PHPUnit Tests
+        run: php vendor/bin/phpunit tests
