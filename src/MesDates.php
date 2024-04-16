@@ -7,13 +7,12 @@
  * 
  * @category MesDates
  * @package  MesDates
- * @author   Author <theo.rmd-perso@outlook.com>
+ * @author   Author <walid.rmd-perso@outlook.com>
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/ 
  */
 
 namespace UPJV;
-
 
 
 /**
@@ -23,7 +22,7 @@ namespace UPJV;
  * 
  * @category MesDates
  * @package  MesDates
- * @author   Author <theo.rmd-perso@outlook.com>
+ * @author   Author <walid.rmd-perso@outlook.com>
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/
  * @return   void 

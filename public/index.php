@@ -7,7 +7,7 @@
  * 
  * @category Affiches
  * @package  Affiches
- * @author   Author <theo.rmd-perso@outlook.com>
+ * @author   Author <walid.rmd-perso@outlook.com>
  * @license  https://opensource.org/licenses/MIT MIT License
  * @link     http://localhost/ 
  */
@@ -15,4 +15,5 @@
 require_once "src/MesDates.php";
 
 $objDate = new \UPJV\MesDates();
-echo $objDate->demain();
+$dateDemain = $objDate->demain();
+echo $dateDemain;
