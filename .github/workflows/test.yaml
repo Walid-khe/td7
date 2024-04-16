@@ -19,3 +19,6 @@ jobs:
 
     - name: Exécuter PHPCS
       run: ~/.composer/vendor/bin/phpcs ./src
+
+    - name: Exécuter PHPUnit Tests
+    run: vendor/bin/phpunit --testdox tests
