@@ -1,24 +1,48 @@
 name: Verifier Code
 
-on: [push, pull_request]
-
+on: [push]
 jobs:
-  demo:
+  phpcs:
+    name: PHPCS
     runs-on: ubuntu-latest
 
     steps:
-    - run: pwd
-    - run: ls
-    - name: Checkout repository
+      
+name: Checkout du code
       uses: actions/checkout@v2
-    - run: ls ${{github.workspace}}
 
-    - name: Installer PHP_CodeSniffer
+      
+name: PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "8.2"
+
+      
+name: Installer PHPCS
       run: composer global require "squizlabs/php_codesniffer=*"
 
-
-    - name: Exécuter PHPCS
+      
+name: Exécuter PHPCS
       run: ~/.composer/vendor/bin/phpcs ./src
+phpunit:
+  name: PHPUnit Tests
+  runs-on: ubuntu-latest
 
-    - name: Exécuter PHPUnit Tests
-    run: vendor/bin/phpunit --testdox tests
+    steps:
+      
+name: Checkout code
+      uses: actions/checkout@v2
+
+      
+name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "8.2"
+
+      
+name: Install Composer Dependencies
+      run: composer install
+
+      
+name: Run PHPUnit Tests
+      run: php vendor/bin/phpunit tests
