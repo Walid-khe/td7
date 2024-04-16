@@ -33,4 +33,4 @@ jobs:
           php-version: "8.2"
 
       - name: Run PHPUnit Tests
-        run: ~/vendor/bin/phpunit MesDatesTest.php
+        run: php vendor/bin/phpunit tests
