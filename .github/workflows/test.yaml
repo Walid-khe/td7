@@ -1,48 +1,42 @@
-name: Verifier Code
-
+name: PHPCS td6
 on: [push]
 jobs:
   phpcs:
-    -name: PHPCS
-     runs-on: ubuntu-latest
+    name: PHPCS
+    runs-on: ubuntu-latest
 
     steps:
-      
-    -name: Checkout du code
-      uses: actions/checkout@v2
+      - name: Checkout du code
+        uses: actions/checkout@v2
 
-      
-      -name: PHP
-            uses: shivammathur/setup-php@v2
-            with:
-              php-version: "8.2"
-      
-            
-      -name: Installer PHPCS
-            run: composer global require "squizlabs/php_codesniffer=*"
-      
-            
-      -name: Exécuter PHPCS
-            run: ~/.composer/vendor/bin/phpcs ./src
-      phpunit:
-        -name: PHPUnit Tests
-        runs-on: ubuntu-latest
-      
-          steps:
-            
-      -name: Checkout code
-            uses: actions/checkout@v2
-      
-            
-      -name: Setup PHP
-            uses: shivammathur/setup-php@v2
-            with:
-              php-version: "8.2"
-      
-      
--name: Install Composer Dependencies
-      run: composer install
+      - name: PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
 
-      
--name: Run PHPUnit Tests
-      run: php vendor/bin/phpunit tests
+      - name: Installer PHPCS
+        run: composer global require "squizlabs/php_codesniffer=*"
+
+      - name: Exécuter PHPCS
+        run: ~/.composer/vendor/bin/phpcs ./src
+  phpunit:
+    name: PHPUnit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Install Composer Dependencies
+        run: composer install
+
+      - name: Check PHPUnit Installation
+        run: ls -l vendor/bin
+
+      - name: Run PHPUnit Tests
+        run: php vendor/bin/phpunit tests
